@@ -30,9 +30,9 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
         //lista de banners
         getInteractor().loadBanners(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
         //lista de categorias
-        getInteractor().loadCategorias(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+        //getInteractor().loadCategorias(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
         //lista de produtos mais vendidos
-        getInteractor().loadProdutosMaisVendidos(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+        //getInteractor().loadProdutosMaisVendidos(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
     }
 
     override fun getView() = mView as V

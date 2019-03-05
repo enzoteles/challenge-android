@@ -2,15 +2,18 @@ package br.com.desafio.home
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import br.com.desafio.R
 import br.com.desafio.base.BaseActivity
+import br.com.desafio.home.fragment.ListBannersFragment
+import br.com.desafio.home.fragment.ListCategoriasFragment
+import br.com.desafio.home.fragment.ListProdutosMaisVendidosFragment
 import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.DataProduto
-import br.com.desafio.util.WrapperLog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
@@ -25,6 +28,8 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
 
     val mPresenter: HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor> by inject()
     val mInteractor: HomeInteractor by inject()
+    lateinit var transaction: FragmentTransaction
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,26 +54,36 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     }
 
     override fun loadBanners(banners: List<DataBanner>?) {
-        banners!!.forEach {
-            WrapperLog.info("${it.linkUrl}")
-        }
+
+        val fragBanner = ListBannersFragment(banners)
+        transaction.add(R.id.frag_banners, fragBanner)
+        transaction.commitAllowingStateLoss()
     }
 
     override fun loadCategorias(categorias: List<DataCagetoria>?) {
-        categorias!!.forEach {
-            WrapperLog.info("${it.descricao}")
-        }
+        initListCategoriasFragments(categorias)
+    }
+
+    override fun initListCategoriasFragments(categorias: List<DataCagetoria>?) {
+        val fragCategoria = ListCategoriasFragment(categorias)
+        transaction.add(R.id.frag_categorias, fragCategoria)
+        transaction.commitAllowingStateLoss()
     }
 
     override fun loadProdutosMaisVendidos(produtos: List<DataProduto>?) {
-        produtos!!.forEach {
-            WrapperLog.info("${it.descricao}")
-        }
+        initListProdutosMaisVendidosFragments(produtos)
+    }
+
+    override fun initListProdutosMaisVendidosFragments(produtos: List<DataProduto>?) {
+        val fragProdutosMaisVendidos = ListProdutosMaisVendidosFragment(produtos)
+        transaction.add(R.id.frag_prod_mais_vend, fragProdutosMaisVendidos)
+        transaction.commitAllowingStateLoss()
     }
 
     override fun initView() {
         mPresenter.initView(this, baseContext)
         navView.setNavigationItemSelectedListener(this)
+        transaction = supportFragmentManager.beginTransaction()
     }
 
     override fun initDate() {
@@ -103,6 +118,11 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun addListFragmentBanner(listFragBanner: ListBannersFragment) {
+       transaction.add(R.id.frag_banners, listFragBanner)
+       transaction.commitAllowingStateLoss()
     }
 
 }

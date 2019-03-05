@@ -1,5 +1,6 @@
 package br.com.desafio.home
 
+import br.com.desafio.home.fragment.ListBannersFragment
 import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.DataProduto
@@ -21,6 +22,9 @@ interface OnHomeMVP {
         fun loadProdutosMaisVendidos(produtos: List<DataProduto>?)
         fun initToolbar()
         fun initDrawerLayout()
+        fun initListCategoriasFragments(categorias: List<DataCagetoria>?)
+        fun initListProdutosMaisVendidosFragments(produtos: List<DataProduto>?)
+        fun addListFragmentBanner(listFragBanner: ListBannersFragment)
     }
 
     interface Presenter<V, I> : OnGenericMVP.Presenter<OnHomeMVP.View, OnHomeMVP.Interactor> {

@@ -7,4 +7,4 @@ import android.support.v7.app.AppCompatActivity
  * Software Developer Sr.
  */
 
-open class BaseActivity: AppCompatActivity()
+open abstract class BaseActivity: AppCompatActivity()
