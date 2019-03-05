@@ -12,7 +12,7 @@ import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.DataProduto
 import br.com.desafio.util.WrapperLog
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
 
 /**
@@ -90,12 +90,6 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
                 // Handle the camera action
             }
             R.id.nav_item_two -> {
-
-            }
-            R.id.nav_item_three -> {
-
-            }
-            R.id.nav_item_four -> {
 
             }
         }
