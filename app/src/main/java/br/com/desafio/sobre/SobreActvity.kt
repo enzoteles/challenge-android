@@ -18,12 +18,5 @@ class SobreActvity: BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sobre_activity)
-        initToolbar()
     }
-
-    private fun initToolbar() {
-        toolbar_sobre.title = "sobre"
-        setSupportActionBar(toolbar_sobre)
-    }
-
 }

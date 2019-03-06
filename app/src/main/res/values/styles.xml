@@ -24,4 +24,18 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="TextBlackToolbar" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">#4a4a4a</item>
+        <item name="typeface">Pacifico.ttf</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="TextBlackNavBarTitle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">#4a4a4a</item>
+        <item name="typeface">Pacifico.ttf</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
 </resources>

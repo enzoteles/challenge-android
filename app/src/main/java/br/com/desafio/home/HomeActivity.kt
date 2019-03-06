@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import br.com.desafio.R
 import br.com.desafio.base.BaseActivity
 import br.com.desafio.home.fragment.HomeFragment
@@ -44,7 +45,12 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     fun initToolbar() {
+        val tb = toolbar
+        val mTitle = tb.findViewById<TextView>(R.id.toolbar_title)
+
         setSupportActionBar(toolbar)
+        mTitle.text = "a Lodjinha"
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
 
     fun initDrawerLayout() {
@@ -65,7 +71,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_item_one -> {
                 val home = HomeFragment()
