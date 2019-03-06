@@ -20,8 +20,6 @@ interface OnHomeMVP {
         fun msgError(error: String)
         fun loadCategorias(categorias: List<DataCagetoria>?)
         fun loadProdutosMaisVendidos(produtos: List<DataProduto>?)
-        fun initToolbar()
-        fun initDrawerLayout()
     }
 
     interface Presenter<V, I> : OnGenericMVP.Presenter<OnHomeMVP.View, OnHomeMVP.Interactor> {

@@ -5,19 +5,13 @@
               android:weightSum="6"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_sobre"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:background="?attr/colorPrimary"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
 
     <LinearLayout
             android:id="@+id/layout_home"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5.5"
+            android:layout_weight="6"
             android:orientation="vertical"
             android:weightSum="5">
 

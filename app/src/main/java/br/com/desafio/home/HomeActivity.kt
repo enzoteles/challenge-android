@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.LinearLayout
 import br.com.desafio.R
 import br.com.desafio.base.BaseActivity
+import br.com.desafio.home.fragment.HomeFragment
 import br.com.desafio.home.fragment.ListBannersFragment
 import br.com.desafio.home.fragment.ListCategoriasFragment
 import br.com.desafio.home.fragment.ListProdutosMaisVendidosFragment
@@ -18,6 +19,7 @@ import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.DataProduto
 import br.com.desafio.sobre.SobreActvity
+import br.com.desafio.sobre.SobreFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
@@ -28,10 +30,8 @@ import org.koin.android.ext.android.inject
  * Software Developer Sr.
  */
 
-class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigationItemSelectedListener{
+class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
 
-    val mPresenter: HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor> by inject()
-    val mInteractor: HomeInteractor by inject()
     var transaction: FragmentTransaction?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,14 +41,13 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
         initToolbar()
         initDrawerLayout()
         initView()
-        initDate()
     }
 
-    override fun initToolbar() {
+    fun initToolbar() {
         setSupportActionBar(toolbar)
     }
 
-    override fun initDrawerLayout() {
+    fun initDrawerLayout() {
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer
         )
@@ -56,61 +55,29 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
         toggle.syncState()
     }
 
-    override fun loadBanners(banners: List<DataBanner>?) {
-        val fragBanner = ListBannersFragment(banners)
-        transaction = supportFragmentManager.beginTransaction()
-        transaction!!.add(R.id.frag_banners, fragBanner!!)
-        transaction!!.commitAllowingStateLoss()
-        requestCategoria()
-    }
 
-    override fun loadCategorias(categorias: List<DataCagetoria>?) {
-        val fragCategoria = ListCategoriasFragment(categorias)
-        transaction = supportFragmentManager.beginTransaction()
-        transaction!!.add(R.id.frag_categorias, fragCategoria!!)
-        transaction!!.commitAllowingStateLoss()
-        requestProdutoMaisVendidos()
-    }
-
-    override fun loadProdutosMaisVendidos(produtos: List<DataProduto>?) {
-        val fragProdutosMaisVendidos = ListProdutosMaisVendidosFragment(produtos)
-        transaction = supportFragmentManager.beginTransaction()
-        transaction!!.add(R.id.frag_prod_mais_vend, fragProdutosMaisVendidos!!)
-        transaction!!.commitAllowingStateLoss()
-    }
-
-    override fun initView() {
-        mPresenter.initView(this, baseContext)
+    fun initView() {
         navView.setNavigationItemSelectedListener(this)
-    }
-
-    override fun initDate() {
-        mPresenter.initInteractor(mInteractor)
-    }
-
-    fun requestCategoria() {
-        mPresenter.requestCategoria()
-    }
-
-    fun requestProdutoMaisVendidos() {
-        mPresenter.requestProdutoMaisVendidos()
-    }
-
-    override fun isAttached() = !isFinishing
-
-    override fun msgError(error: String) {
-        error(error)
+        val home = HomeFragment()
+        transaction = supportFragmentManager.beginTransaction()
+        transaction!!.add(R.id.content, home)
+        transaction!!.commit()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_item_one -> {
-                // Handle the camera action
+                val home = HomeFragment()
+                transaction = supportFragmentManager.beginTransaction()
+                transaction!!.replace(R.id.content, home)
+                transaction!!.commit()
             }
             R.id.nav_item_two -> {
-                val intent = Intent(this, SobreActvity::class.java)
-                startActivity(intent)
+                val sobre = SobreFragment()
+                transaction = supportFragmentManager.beginTransaction()
+                transaction!!.replace(R.id.content, sobre)
+                transaction!!.commit()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)

@@ -47,19 +47,19 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
     override fun getInteractor() = mInteractor as I
 
     override fun loadBanners(banners: List<DataBanner>?) {
-        if (mView.isAttached()){
+        if (!mView.isAttached()){
             mView.loadBanners(banners)
         }
     }
 
     override fun loadCategorias(categorias: List<DataCagetoria>?) {
-        if (mView.isAttached()){
+        if (!mView.isAttached()){
             mView.loadCategorias(categorias)
         }
     }
 
     override fun loadProdutosMaisVendidos(produtos: List<DataProduto>?) {
-        if (mView.isAttached()){
+        if (!mView.isAttached()){
             mView.loadProdutosMaisVendidos(produtos)
         }
     }
