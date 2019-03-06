@@ -26,11 +26,10 @@ class ListCategoriaAdapter(val items: List<DataCagetoria>?, val context: Context
         val categoria = items!!.get(position)
 
         holder?.itemView.tv_descricao.text = categoria.descricao
-        /*Picasso
-            .with(context) // give it the context
-            .load(categoria.urlImagem) // load the image
-            .fit().centerCrop()
-            .into(holder?.itemView.iv_produto)*/
+        Picasso
+            .with(context)
+            .load(categoria.urlImagem)
+            .into(holder?.itemView.iv_produto)
     }
 
 }

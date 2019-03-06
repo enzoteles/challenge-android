@@ -22,8 +22,6 @@ interface OnHomeMVP {
         fun loadProdutosMaisVendidos(produtos: List<DataProduto>?)
         fun initToolbar()
         fun initDrawerLayout()
-        fun initListProdutosMaisVendidosFragments(produtos: List<DataProduto>?)
-        fun addListFragmentBanner(listFragBanner: ListBannersFragment)
     }
 
     interface Presenter<V, I> : OnGenericMVP.Presenter<OnHomeMVP.View, OnHomeMVP.Interactor> {
@@ -33,6 +31,8 @@ interface OnHomeMVP {
         fun loadCategorias(categorias: List<DataCagetoria>?)
         fun loadProdutosMaisVendidos(produtos: List<DataProduto>?)
         fun error(code: Int)
+        fun requestCategoria()
+        fun requestProdutoMaisVendidos()
     }
 
     interface Interactor : OnGenericMVP.Interactor {

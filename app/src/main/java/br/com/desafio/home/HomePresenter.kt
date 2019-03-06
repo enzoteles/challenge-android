@@ -1,6 +1,7 @@
 package br.com.desafio.home
 
 import android.content.Context
+import android.os.Handler
 import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.DataProduto
@@ -28,11 +29,17 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
     override fun initInteractor(mInteractor: OnHomeMVP.Interactor) {
         this.mInteractor = mInteractor
         //lista de banners
-        //getInteractor().loadBanners(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+        getInteractor().loadBanners(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+    }
+
+    override fun requestCategoria() {
         //lista de categorias
         getInteractor().loadCategorias(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+    }
+
+    override fun requestProdutoMaisVendidos() {
         //lista de produtos mais vendidos
-        //getInteractor().loadProdutosMaisVendidos(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+        getInteractor().loadProdutosMaisVendidos(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
     }
 
     override fun getView() = mView as V

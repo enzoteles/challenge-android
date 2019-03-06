@@ -28,7 +28,10 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
 
     val mPresenter: HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor> by inject()
     val mInteractor: HomeInteractor by inject()
-    lateinit var transaction: FragmentTransaction
+    var transaction: FragmentTransaction?= null
+    var fragBanner: ListBannersFragment ?= null
+    var fragCategoria: ListCategoriasFragment?= null
+    var fragProdutosMaisVendidos: ListProdutosMaisVendidosFragment?= null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,35 +57,43 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     }
 
     override fun loadBanners(banners: List<DataBanner>?) {
-        val fragBanner = ListBannersFragment(banners)
-        transaction.add(R.id.frag_banners, fragBanner)
-        transaction.commitAllowingStateLoss()
+        fragBanner = ListBannersFragment(banners)
+        transaction = supportFragmentManager.beginTransaction()
+        transaction!!.add(R.id.frag_banners, fragBanner!!)
+        transaction!!.commitAllowingStateLoss()
+        requestCategoria()
     }
 
     override fun loadCategorias(categorias: List<DataCagetoria>?) {
-        val fragCategoria = ListCategoriasFragment(categorias)
-        transaction.add(R.id.frag_categorias, fragCategoria)
-        transaction.commitAllowingStateLoss()
+        fragCategoria = ListCategoriasFragment(categorias)
+        transaction = supportFragmentManager.beginTransaction()
+        transaction!!.add(R.id.frag_categorias, fragCategoria!!)
+        transaction!!.commitAllowingStateLoss()
+        requestProdutoMaisVendidos()
     }
 
     override fun loadProdutosMaisVendidos(produtos: List<DataProduto>?) {
-        initListProdutosMaisVendidosFragments(produtos)
-    }
-
-    override fun initListProdutosMaisVendidosFragments(produtos: List<DataProduto>?) {
-        val fragProdutosMaisVendidos = ListProdutosMaisVendidosFragment(produtos)
-        transaction.add(R.id.frag_prod_mais_vend, fragProdutosMaisVendidos)
-        transaction.commitAllowingStateLoss()
+        fragProdutosMaisVendidos = ListProdutosMaisVendidosFragment(produtos)
+        transaction = supportFragmentManager.beginTransaction()
+        transaction!!.add(R.id.frag_prod_mais_vend, fragProdutosMaisVendidos!!)
+        transaction!!.commitAllowingStateLoss()
     }
 
     override fun initView() {
         mPresenter.initView(this, baseContext)
         navView.setNavigationItemSelectedListener(this)
-        transaction = supportFragmentManager.beginTransaction()
     }
 
     override fun initDate() {
         mPresenter.initInteractor(mInteractor)
+    }
+
+    fun requestCategoria() {
+        mPresenter.requestCategoria()
+    }
+
+    fun requestProdutoMaisVendidos() {
+        mPresenter.requestProdutoMaisVendidos()
     }
 
     override fun isAttached(): Boolean {
@@ -113,11 +124,6 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
         } else {
             super.onBackPressed()
         }
-    }
-
-    override fun addListFragmentBanner(listFragBanner: ListBannersFragment) {
-       transaction.add(R.id.frag_banners, listFragBanner)
-       transaction.commitAllowingStateLoss()
     }
 
 }
