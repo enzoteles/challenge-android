@@ -29,9 +29,6 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     val mPresenter: HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor> by inject()
     val mInteractor: HomeInteractor by inject()
     var transaction: FragmentTransaction?= null
-    var fragBanner: ListBannersFragment ?= null
-    var fragCategoria: ListCategoriasFragment?= null
-    var fragProdutosMaisVendidos: ListProdutosMaisVendidosFragment?= null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +54,7 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     }
 
     override fun loadBanners(banners: List<DataBanner>?) {
-        fragBanner = ListBannersFragment(banners)
+        val fragBanner = ListBannersFragment(banners)
         transaction = supportFragmentManager.beginTransaction()
         transaction!!.add(R.id.frag_banners, fragBanner!!)
         transaction!!.commitAllowingStateLoss()
@@ -65,7 +62,7 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     }
 
     override fun loadCategorias(categorias: List<DataCagetoria>?) {
-        fragCategoria = ListCategoriasFragment(categorias)
+        val fragCategoria = ListCategoriasFragment(categorias)
         transaction = supportFragmentManager.beginTransaction()
         transaction!!.add(R.id.frag_categorias, fragCategoria!!)
         transaction!!.commitAllowingStateLoss()
@@ -73,7 +70,7 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     }
 
     override fun loadProdutosMaisVendidos(produtos: List<DataProduto>?) {
-        fragProdutosMaisVendidos = ListProdutosMaisVendidosFragment(produtos)
+        val fragProdutosMaisVendidos = ListProdutosMaisVendidosFragment(produtos)
         transaction = supportFragmentManager.beginTransaction()
         transaction!!.add(R.id.frag_prod_mais_vend, fragProdutosMaisVendidos!!)
         transaction!!.commitAllowingStateLoss()
@@ -96,9 +93,7 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
         mPresenter.requestProdutoMaisVendidos()
     }
 
-    override fun isAttached(): Boolean {
-        return !isFinishing
-    }
+    override fun isAttached() = !isFinishing
 
     override fun msgError(error: String) {
         error(error)
