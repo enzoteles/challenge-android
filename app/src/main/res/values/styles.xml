@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextBlack64spLogoSobre" parent="ThemeOverlay.AppCompat.Light">
+            <item name="android:textColor">#4a4a4a</item>
+        <item name="android:textSize">64sp</item>
+        <item name="typeface">Pacifico.ttf</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBlack14spNomeDev" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextBlack12sData" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

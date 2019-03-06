@@ -1,11 +1,14 @@
 package br.com.desafio.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import br.com.desafio.R
 import br.com.desafio.base.BaseActivity
 import br.com.desafio.home.fragment.ListBannersFragment
@@ -14,6 +17,7 @@ import br.com.desafio.home.fragment.ListProdutosMaisVendidosFragment
 import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.DataProduto
+import br.com.desafio.sobre.SobreActvity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
@@ -29,7 +33,6 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     val mPresenter: HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor> by inject()
     val mInteractor: HomeInteractor by inject()
     var transaction: FragmentTransaction?= null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,7 +109,8 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
                 // Handle the camera action
             }
             R.id.nav_item_two -> {
-
+                val intent = Intent(this, SobreActvity::class.java)
+                startActivity(intent)
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTypeFace">
+        <attr name="typeface" format="string" />
+        <attr name="mask" format="string" />
+        <attr name="textFieldStyle" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="HeaderButtonView">
+        <attr name="buttonLabel" format="string"/>
+        <attr name="headerButtonIcon" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="HomeActionButtonView">
+        <attr name="buttonPrepaidActionLabel" format="string" />
+        <attr name="buttonActionIcon" format="integer"/>
+    </declare-styleable>
+
+</resources>
