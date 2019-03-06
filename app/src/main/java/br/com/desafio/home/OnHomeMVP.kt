@@ -22,7 +22,6 @@ interface OnHomeMVP {
         fun loadProdutosMaisVendidos(produtos: List<DataProduto>?)
         fun initToolbar()
         fun initDrawerLayout()
-        fun initListCategoriasFragments(categorias: List<DataCagetoria>?)
         fun initListProdutosMaisVendidosFragments(produtos: List<DataProduto>?)
         fun addListFragmentBanner(listFragBanner: ListBannersFragment)
     }

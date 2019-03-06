@@ -2,11 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-              android:background="#00ffff"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="list categorias" android:gravity="center" android:layout_gravity="center"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Categoria"
+              android:layout_marginTop="10dp"
+              android:layout_marginLeft="10dp"
+              android:textStyle="bold"
+              android:textSize="20sp"
+              android:textColor="@android:color/black"
+              android:layout_marginBottom="10dp"
+    />
+
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@android:color/darker_gray"
+          android:layout_marginBottom="25dp"
+    />
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_categorias"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 </LinearLayout>

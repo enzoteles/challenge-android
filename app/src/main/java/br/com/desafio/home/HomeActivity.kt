@@ -54,17 +54,12 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View , NavigationView.OnNavigatio
     }
 
     override fun loadBanners(banners: List<DataBanner>?) {
-
         val fragBanner = ListBannersFragment(banners)
         transaction.add(R.id.frag_banners, fragBanner)
         transaction.commitAllowingStateLoss()
     }
 
     override fun loadCategorias(categorias: List<DataCagetoria>?) {
-        initListCategoriasFragments(categorias)
-    }
-
-    override fun initListCategoriasFragments(categorias: List<DataCagetoria>?) {
         val fragCategoria = ListCategoriasFragment(categorias)
         transaction.add(R.id.frag_categorias, fragCategoria)
         transaction.commitAllowingStateLoss()

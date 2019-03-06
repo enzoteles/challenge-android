@@ -29,7 +29,5 @@ class BannerItemFragment(var urlImage: String) : BaseFragment(){
             .load(urlImage) // load the image
             .fit().centerCrop()
             .into(item_banner)
-
-
     }
 }
