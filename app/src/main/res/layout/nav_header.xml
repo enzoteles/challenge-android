@@ -26,6 +26,6 @@
             android:paddingTop="16dp"
             android:textColor="@android:color/white"
             android:gravity="right"
-            android:text="a Lodjinha"
+            android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 </LinearLayout>

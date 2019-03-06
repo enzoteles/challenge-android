@@ -33,7 +33,7 @@
                   android:layout_height="0dp"
                   style="@style/TextBlack64spLogoSobre"
                   android:layout_weight="2.5"
-                  android:text="a Lodjinha"
+                  android:text="@string/app_name"
                   android:gravity="center_horizontal"
         />
 
@@ -42,7 +42,7 @@
                   android:layout_height="0dp"
                   style="@style/TextBlack14spNomeDev"
                   android:layout_weight=".25"
-                  android:text="Enzo de Carvalho Teles"
+                  android:text="@string/nome_dev"
                   android:gravity="center"
                   android:textColor="@android:color/black"
         />
@@ -52,7 +52,7 @@
                   android:layout_height="0dp"
                   style="@style/TextBlack12sData"
                   android:layout_weight=".25"
-                  android:text="5 de março de 2019"
+                  android:text="@string/data_dev"
                   android:gravity="center_horizontal"
 
         />

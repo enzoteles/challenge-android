@@ -49,7 +49,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val mTitle = tb.findViewById<TextView>(R.id.toolbar_title)
 
         setSupportActionBar(toolbar)
-        mTitle.text = "a Lodjinha"
+        mTitle.text = getString(R.string.app_name)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
 

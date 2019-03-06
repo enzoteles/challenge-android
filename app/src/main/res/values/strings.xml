@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">a lodjinha</string>
+    <string name="app_name">a Lodjinha</string>
     <string name="open_drawer">Abrir</string>
     <string name="close_drawer">Fechar</string>
+    <string name="nome_dev">Enzo de Carvalho Teles</string>
+    <string name="data_dev">5 de março de 2019</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_sobre">Sobre o aplicativo</string>
+
 </resources>
